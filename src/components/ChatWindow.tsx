@@ -45,12 +45,12 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ chat, messages, onSendMessage }
   };
 
   return (
-    <div className="h-full flex flex-col bg-gradient-to-b from-blue-50 to-indigo-100 dark:from-blue-900 dark:to-indigo-900">
+    <div className="h-full flex flex-col bg-gray-100 dark:bg-gray-900">
       {/* Chat Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 flex items-center justify-between shadow-lg">
+      <div className="bg-gray-700 dark:bg-gray-800 text-white p-4 flex items-center justify-between shadow-lg border-b border-gray-600">
         <div className="flex items-center gap-3">
           <div className="relative">
-            <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-orange-500 rounded-full flex items-center justify-center text-white font-semibold">
+            <div className="w-10 h-10 bg-gray-400 dark:bg-gray-600 rounded-full flex items-center justify-center text-white font-semibold">
               {chat.avatar ? (
                 <img src={chat.avatar} alt={chat.name} className="w-full h-full rounded-full object-cover" />
               ) : (
@@ -63,7 +63,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ chat, messages, onSendMessage }
           </div>
           <div>
             <h2 className="font-semibold">{chat.name}</h2>
-            <p className="text-xs text-blue-100">
+            <p className="text-xs text-gray-300">
               {chat.isOnline ? 'Online' : 'Last seen recently'}
             </p>
           </div>
@@ -92,13 +92,13 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ chat, messages, onSendMessage }
             <Card
               className={`max-w-xs lg:max-w-md px-4 py-2 ${
                 message.isOwn
-                  ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white'
-                  : 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-white dark:bg-gray-800 text-foreground'
               } shadow-md`}
             >
               <p className="text-sm">{message.text}</p>
               <div className={`text-xs mt-1 ${
-                message.isOwn ? 'text-emerald-100' : 'text-gray-500 dark:text-gray-400'
+                message.isOwn ? 'text-blue-100' : 'text-muted-foreground'
               }`}>
                 {message.timestamp}
                 {message.isOwn && message.status && (
@@ -115,9 +115,9 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ chat, messages, onSendMessage }
       </div>
 
       {/* Message Input */}
-      <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+      <div className="p-4 bg-white dark:bg-gray-800 border-t border-border">
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" className="text-gray-500 hover:text-purple-600">
+          <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-blue-600">
             <Paperclip className="w-5 h-5" />
           </Button>
           
@@ -128,12 +128,12 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ chat, messages, onSendMessage }
               onChange={(e) => setNewMessage(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Type a message..."
-              className="w-full px-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-2 rounded-full border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <Button
               variant="ghost"
               size="icon"
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-purple-600"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-blue-600"
             >
               <Smile className="w-5 h-5" />
             </Button>
@@ -141,7 +141,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ chat, messages, onSendMessage }
           
           <Button
             onClick={handleSend}
-            className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded-full px-6"
+            className="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-6"
           >
             <Send className="w-4 h-4" />
           </Button>

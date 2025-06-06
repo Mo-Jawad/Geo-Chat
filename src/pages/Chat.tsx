@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -7,7 +8,7 @@ import { User, Session } from '@supabase/supabase-js';
 import { ThemeToggle } from '@/components/theme-toggle';
 import ChatList from '@/components/ChatList';
 import ChatWindow from '@/components/ChatWindow';
-import { MessageCircle } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 
 interface Chat {
   id: string;
@@ -165,10 +166,10 @@ const Chat = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-900 dark:to-pink-900">
+      <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
-          <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse mx-auto mb-4"></div>
-          <p className="text-gray-900 dark:text-white">Loading...</p>
+          <div className="w-16 h-16 bg-primary rounded-full animate-pulse mx-auto mb-4"></div>
+          <p className="text-foreground">Loading...</p>
         </div>
       </div>
     );
@@ -179,17 +180,17 @@ const Chat = () => {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-gradient-to-br from-indigo-50 to-purple-100 dark:from-indigo-900 dark:to-purple-900">
+    <div className="h-screen flex flex-col bg-background">
       {/* Header */}
-      <header className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg z-10">
+      <header className="bg-gray-800 dark:bg-gray-900 text-white shadow-lg z-10 border-b border-gray-700">
         <div className="px-6 py-4">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold flex items-center gap-3">
-              <MessageCircle className="w-8 h-8" />
-              Chat App
+              <MessageSquare className="w-8 h-8" />
+              Geo Chat
             </h1>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-indigo-100">
+              <span className="text-sm text-gray-300">
                 Welcome, {user.email}
               </span>
               <ThemeToggle />
@@ -197,7 +198,7 @@ const Chat = () => {
                 onClick={handleLogout} 
                 variant="outline" 
                 size="sm" 
-                className="border-white/30 text-white hover:bg-white/20 hover:text-white"
+                className="border-gray-600 text-white hover:bg-gray-700 hover:text-white"
               >
                 Logout
               </Button>
@@ -209,7 +210,7 @@ const Chat = () => {
       {/* Main Chat Interface */}
       <div className="flex flex-1 overflow-hidden">
         {/* Chat List */}
-        <div className="w-1/3 border-r border-gray-200 dark:border-gray-700">
+        <div className="w-1/3 border-r border-border">
           <ChatList
             chats={chats}
             onChatSelect={handleChatSelect}
@@ -226,13 +227,13 @@ const Chat = () => {
               onSendMessage={handleSendMessage}
             />
           ) : (
-            <div className="h-full flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+            <div className="h-full flex items-center justify-center bg-background">
               <div className="text-center">
-                <MessageCircle className="w-24 h-24 text-gray-400 mx-auto mb-4" />
-                <h2 className="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                <MessageSquare className="w-24 h-24 text-muted-foreground mx-auto mb-4" />
+                <h2 className="text-xl font-semibold text-foreground mb-2">
                   Select a chat to start messaging
                 </h2>
-                <p className="text-gray-500 dark:text-gray-500">
+                <p className="text-muted-foreground">
                   Choose a conversation from the list to view messages
                 </p>
               </div>

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { User, MessageCircle } from 'lucide-react';
+import { User, MessageSquare } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 interface Chat {
@@ -21,10 +21,10 @@ interface ChatListProps {
 
 const ChatList: React.FC<ChatListProps> = ({ chats, onChatSelect, selectedChatId }) => {
   return (
-    <div className="h-full bg-gradient-to-b from-emerald-50 to-emerald-100 dark:from-emerald-900 dark:to-emerald-800">
-      <div className="p-4 bg-emerald-600 dark:bg-emerald-700 text-white">
+    <div className="h-full bg-gray-50 dark:bg-gray-900">
+      <div className="p-4 bg-gray-700 dark:bg-gray-800 text-white border-b border-gray-600">
         <h1 className="text-xl font-semibold flex items-center gap-2">
-          <MessageCircle className="w-6 h-6" />
+          <MessageSquare className="w-6 h-6" />
           Chats
         </h1>
       </div>
@@ -35,14 +35,14 @@ const ChatList: React.FC<ChatListProps> = ({ chats, onChatSelect, selectedChatId
             key={chat.id}
             className={`p-3 cursor-pointer transition-all duration-200 hover:shadow-md border-l-4 ${
               selectedChatId === chat.id
-                ? 'bg-emerald-100 dark:bg-emerald-800 border-l-emerald-500 shadow-md'
-                : 'bg-white dark:bg-gray-800 border-l-transparent hover:bg-emerald-50 dark:hover:bg-emerald-900'
+                ? 'bg-blue-50 dark:bg-blue-900/30 border-l-blue-500 shadow-md'
+                : 'bg-white dark:bg-gray-800 border-l-transparent hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
             onClick={() => onChatSelect(chat)}
           >
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold">
+                <div className="w-12 h-12 bg-gray-400 dark:bg-gray-600 rounded-full flex items-center justify-center text-white font-semibold">
                   {chat.avatar ? (
                     <img src={chat.avatar} alt={chat.name} className="w-full h-full rounded-full object-cover" />
                   ) : (
@@ -56,19 +56,19 @@ const ChatList: React.FC<ChatListProps> = ({ chats, onChatSelect, selectedChatId
               
               <div className="flex-1 min-w-0">
                 <div className="flex justify-between items-start">
-                  <h3 className="font-medium text-gray-900 dark:text-white truncate">
+                  <h3 className="font-medium text-foreground truncate">
                     {chat.name}
                   </h3>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                  <span className="text-xs text-muted-foreground">
                     {chat.timestamp}
                   </span>
                 </div>
                 <div className="flex justify-between items-center mt-1">
-                  <p className="text-sm text-gray-600 dark:text-gray-300 truncate">
+                  <p className="text-sm text-muted-foreground truncate">
                     {chat.lastMessage}
                   </p>
                   {chat.unreadCount && chat.unreadCount > 0 && (
-                    <span className="bg-emerald-500 text-white text-xs rounded-full px-2 py-1 min-w-[20px] text-center">
+                    <span className="bg-blue-500 text-white text-xs rounded-full px-2 py-1 min-w-[20px] text-center">
                       {chat.unreadCount}
                     </span>
                   )}
