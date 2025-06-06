@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -166,9 +165,9 @@ const Chat = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-green-50 dark:from-blue-950 dark:to-green-950">
         <div className="text-center">
-          <div className="w-16 h-16 bg-primary rounded-full animate-pulse mx-auto mb-4"></div>
+          <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-green-500 rounded-full animate-pulse mx-auto mb-4"></div>
           <p className="text-foreground">Loading...</p>
         </div>
       </div>
@@ -180,17 +179,19 @@ const Chat = () => {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-background">
+    <div className="h-screen flex flex-col bg-gradient-to-br from-blue-50/50 to-green-50/50 dark:from-blue-950/50 dark:to-green-950/50">
       {/* Header */}
-      <header className="bg-gray-800 dark:bg-gray-900 text-white shadow-lg z-10 border-b border-gray-700">
+      <header className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 dark:from-blue-800 dark:via-blue-900 dark:to-indigo-900 text-white shadow-xl z-10 border-b border-blue-500/30">
         <div className="px-6 py-4">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold flex items-center gap-3">
-              <MessageSquare className="w-8 h-8" />
-              Geo Chat
+              <MessageSquare className="w-8 h-8 text-blue-200" />
+              <span className="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+                Geo Chat
+              </span>
             </h1>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-300">
+              <span className="text-sm text-blue-100">
                 Welcome, {user.email}
               </span>
               <ThemeToggle />
@@ -198,7 +199,7 @@ const Chat = () => {
                 onClick={handleLogout} 
                 variant="outline" 
                 size="sm" 
-                className="border-gray-600 text-white hover:bg-gray-700 hover:text-white"
+                className="border-blue-300/50 text-white hover:bg-white/20 hover:text-white backdrop-blur-sm"
               >
                 Logout
               </Button>
@@ -210,7 +211,7 @@ const Chat = () => {
       {/* Main Chat Interface */}
       <div className="flex flex-1 overflow-hidden">
         {/* Chat List */}
-        <div className="w-1/3 border-r border-border">
+        <div className="w-1/3 border-r border-blue-200/50 dark:border-blue-800/50">
           <ChatList
             chats={chats}
             onChatSelect={handleChatSelect}
@@ -227,13 +228,13 @@ const Chat = () => {
               onSendMessage={handleSendMessage}
             />
           ) : (
-            <div className="h-full flex items-center justify-center bg-background">
+            <div className="h-full flex items-center justify-center bg-gradient-to-br from-blue-50/30 to-indigo-50/30 dark:from-blue-950/30 dark:to-indigo-950/30">
               <div className="text-center">
-                <MessageSquare className="w-24 h-24 text-muted-foreground mx-auto mb-4" />
-                <h2 className="text-xl font-semibold text-foreground mb-2">
+                <MessageSquare className="w-24 h-24 text-blue-400 dark:text-blue-500 mx-auto mb-4" />
+                <h2 className="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-2">
                   Select a chat to start messaging
                 </h2>
-                <p className="text-muted-foreground">
+                <p className="text-blue-600 dark:text-blue-300">
                   Choose a conversation from the list to view messages
                 </p>
               </div>
