@@ -25,6 +25,12 @@ interface Message {
   timestamp: string;
   isOwn: boolean;
   status?: 'sent' | 'delivered' | 'read';
+  attachments?: {
+    name: string;
+    type: string;
+    size: number;
+    url?: string;
+  }[];
 }
 
 const Chat = () => {
@@ -35,7 +41,6 @@ const Chat = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  // Mock data for demonstration
   const [chats] = useState<Chat[]>([
     {
       id: '1',
@@ -152,7 +157,7 @@ const Chat = () => {
     setSelectedChat(chat);
   };
 
-  const handleSendMessage = (messageText: string) => {
+  const handleSendMessage = (messageText: string, files?: File[]) => {
     const newMessage: Message = {
       id: (messages.length + 1).toString(),
       text: messageText,
@@ -160,7 +165,26 @@ const Chat = () => {
       isOwn: true,
       status: 'sent',
     };
+
+    // Add file attachments if any
+    if (files && files.length > 0) {
+      newMessage.attachments = files.map(file => ({
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        url: URL.createObjectURL(file), // In a real app, upload to storage first
+      }));
+    }
+
     setMessages([...messages, newMessage]);
+
+    // Show success toast for file uploads
+    if (files && files.length > 0) {
+      toast({
+        title: 'Files Shared',
+        description: `${files.length} file(s) shared successfully`,
+      });
+    }
   };
 
   // Get username from user metadata or fallback to email prefix

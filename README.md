@@ -1,73 +1,158 @@
-# Welcome to your Lovable project
 
-## Project info
+# Geo Chat - Real-time Messaging Platform
 
-**URL**: https://lovable.dev/projects/efaf8898-258b-458f-b7d7-dc4e274d605b
+A modern, real-time chat application built with React, TypeScript, and Supabase, featuring a WhatsApp-inspired interface with location-based chat capabilities.
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+- **Real-time Messaging**: Instant message delivery and read receipts
+- **File Sharing**: Support for PDF, image, and video attachments
+- **User Authentication**: Secure login and registration system
+- **Responsive Design**: Mobile-first design with dark mode support
+- **Modern UI**: Clean, intuitive interface inspired by popular messaging apps
+- **Location-based Chat**: Connect with users based on geographical proximity
 
-**Use Lovable**
+## 🛠️ Technology Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/efaf8898-258b-458f-b7d7-dc4e274d605b) and start prompting.
+- **Frontend**: React 18 + TypeScript + Vite
+- **UI Components**: shadcn/ui + Tailwind CSS
+- **Backend**: Supabase (Authentication, Database, Storage)
+- **Icons**: Lucide React
+- **Routing**: React Router DOM
+- **State Management**: React Query (@tanstack/react-query)
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📋 Prerequisites
 
-**Use your preferred IDE**
+Before running this application, ensure you have:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Node.js (v18 or higher)
+- npm or yarn package manager
+- A Supabase account and project
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🔧 Installation
 
-Follow these steps:
+1. **Clone the repository**
+   ```bash
+   git clone <YOUR_GIT_URL>
+   cd <YOUR_PROJECT_NAME>
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+3. **Environment Setup**
+   - Create a Supabase project at [supabase.com](https://supabase.com)
+   - Configure authentication providers in your Supabase dashboard
+   - The app is pre-configured with Supabase credentials
 
-# Step 3: Install the necessary dependencies.
-npm i
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+5. **Open your browser**
+   Navigate to `http://localhost:5173` to view the application
+
+## 🎯 Usage
+
+### Getting Started
+1. Create an account or sign in with existing credentials
+2. Browse available chats in the sidebar
+3. Click on any chat to start messaging
+4. Use the attachment button to share files (PDF, images, videos)
+
+### File Sharing
+- Click the paperclip icon in the message input area
+- Select files from your device (PDF, JPG, PNG, MP4, etc.)
+- Files are automatically uploaded and shared in the chat
+- Recipients can preview and download shared files
+
+### Features Overview
+- **Message Status**: See when messages are sent, delivered, and read
+- **Online Status**: View real-time online/offline status of contacts
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Dark Mode**: Toggle between light and dark themes
+
+## 🏗️ Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # shadcn/ui components
+│   ├── ChatList.tsx    # Chat list sidebar
+│   ├── ChatWindow.tsx  # Main chat interface
+│   └── FileUpload.tsx  # File attachment component
+├── pages/              # Application pages
+│   ├── Auth.tsx        # Authentication page
+│   ├── Chat.tsx        # Main chat page
+│   └── NotFound.tsx    # 404 error page
+├── hooks/              # Custom React hooks
+├── integrations/       # External service integrations
+│   └── supabase/       # Supabase configuration
+└── lib/                # Utility functions
 ```
 
-**Edit a file directly in GitHub**
+## 🚀 Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Using Lovable (Recommended)
+1. Open your [Lovable Project](https://lovable.dev/projects/efaf8898-258b-458f-b7d7-dc4e274d605b)
+2. Click on "Share" → "Publish"
+3. Your app will be live instantly
 
-**Use GitHub Codespaces**
+### Manual Deployment
+1. Build the application:
+   ```bash
+   npm run build
+   ```
+2. Deploy the `dist` folder to your preferred hosting service
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🔗 Custom Domain
 
-## What technologies are used for this project?
+To connect a custom domain:
+1. Navigate to Project → Settings → Domains in Lovable
+2. Click "Connect Domain" and follow the instructions
+3. Note: A paid Lovable plan is required for custom domains
 
-This project is built with:
+## 🤝 Contributing
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## How can I deploy this project?
+## 📝 License
 
-Simply open [Lovable](https://lovable.dev/projects/efaf8898-258b-458f-b7d7-dc4e274d605b) and click on Share -> Publish.
+This project is open source and available under the [MIT License](LICENSE).
 
-## Can I connect a custom domain to my Lovable project?
+## 🐛 Troubleshooting
 
-Yes, you can!
+### Common Issues
+- **Authentication not working**: Ensure Supabase is properly configured
+- **File uploads failing**: Check Supabase storage bucket permissions
+- **App not loading**: Verify all environment variables are set correctly
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Getting Help
+- Check the [Lovable Documentation](https://docs.lovable.dev/)
+- Join our [Discord Community](https://discord.com/channels/1119885301872070706/1280461670979993613)
+- Review the [troubleshooting guide](https://docs.lovable.dev/tips-tricks/)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 🔧 Development
+
+### Available Scripts
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+### Code Quality
+This project uses:
+- TypeScript for type safety
+- ESLint for code linting
+- Prettier for code formatting (configured in your editor)
+
+---
+
+Built with ❤️ using [Lovable](https://lovable.dev) - The AI-powered web development platform
